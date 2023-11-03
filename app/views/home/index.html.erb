@@ -1,2 +1,9 @@
-<h1>Welcome to the Jungle</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+ 
+<% if user_signed_in? %>
+  <h1>Welcome Home, <%= current_user.email %></h1>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
+<% else %>
+  <h1>Home</h1>
+  <h2> Entre: <%= link_to 'Sign in', new_user_session_path %> <br> Cadastre-se: <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
